@@ -7,10 +7,9 @@ const btnLoadMore = document.querySelector('.load-more');
 const galleryRef = document.querySelector('.gallery');
 const apiKey = '35924143-9020fc77f3274be39114409f4';
 
-// const gallery = new SimpleLightbox('.photo-card-link');
-
 let currentPage = 1;
 let currentQuery = '';
+let lightbox;
 
 btnLoadMore.addEventListener('click', onLoadMore);
 formRef.addEventListener('submit', onSearch);
@@ -135,14 +134,14 @@ function showSearchResults(totalHits) {
 }
 
 function initializeLightbox() {
-  const lightbox = new SimpleLightbox('.gallery .photo-card-link', {
+  const lightbox = new SimpleLightbox('.photo-card .photo-card-link', {
     captions: true,
     captionsData: 'alt',
     captionPosition: 'bottom',
     captionDelay: 250,
   });
 
-  if (lightbox) {
-    lightbox.destroy();
-  }
+  // if (lightbox) {
+  //   lightbox.destroy();
+  // }
 }
