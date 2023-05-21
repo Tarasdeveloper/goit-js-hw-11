@@ -140,8 +140,4 @@ function initializeLightbox() {
     captionPosition: 'bottom',
     captionDelay: 250,
   });
-
-  // if (lightbox) {
-  //   lightbox.destroy();
-  // }
 }
