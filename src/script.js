@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import onLoadMore from './loadMore.js';
 const axios = require('axios').default;
 
 const formRef = document.querySelector('.search-form');
@@ -14,6 +15,19 @@ let lightbox;
 
 btnLoadMore.addEventListener('click', onLoadMore);
 formRef.addEventListener('submit', onSearch);
+
+const refs = {
+  currentPage,
+  fetchImages,
+  currentQuery,
+  renderImages,
+  lightbox,
+  initializeLightbox,
+  hideLoadMoreButton,
+  showEndOfResultsMessage,
+};
+
+export default refs;
 
 async function onSearch(event) {
   event.preventDefault();
@@ -39,23 +53,6 @@ async function onSearch(event) {
     showLoadMoreButton();
     showSearchResults(totalHits);
     initializeLightbox();
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function onLoadMore() {
-  currentPage += 1;
-  try {
-    const { images } = await fetchImages(currentQuery, currentPage);
-    if (images.length === 0) {
-      hideLoadMoreButton();
-      showEndOfResultsMessage();
-      return;
-    }
-
-    renderImages(images);
-    lightbox.refresh();
   } catch (error) {
     console.error(error);
   }
