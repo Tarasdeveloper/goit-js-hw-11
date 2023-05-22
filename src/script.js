@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+const axios = require('axios').default;
 
 const formRef = document.querySelector('.search-form');
 const btnLoadMore = document.querySelector('.load-more');
@@ -140,4 +141,8 @@ function initializeLightbox() {
     captionPosition: 'bottom',
     captionDelay: 250,
   });
+
+  // if (lightbox) {
+  //   lightbox destroy();
+  // }
 }
