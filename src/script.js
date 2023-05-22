@@ -54,8 +54,11 @@ async function onLoadMore() {
       return;
     }
 
+    if (lightbox) {
+      lightbox.refresh();
+    }
+
     renderImages(images);
-    initializeLightbox();
   } catch (error) {
     console.error(error);
   }
@@ -135,14 +138,10 @@ function showSearchResults(totalHits) {
 }
 
 function initializeLightbox() {
-  const lightbox = new SimpleLightbox('.photo-card .photo-card-link', {
+  lightbox = new SimpleLightbox('.photo-card .photo-card-link', {
     captions: true,
     captionsData: 'alt',
     captionPosition: 'bottom',
     captionDelay: 250,
   });
-
-  // if (lightbox) {
-  //   lightbox destroy();
-  // }
 }
