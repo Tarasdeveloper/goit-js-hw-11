@@ -54,11 +54,8 @@ async function onLoadMore() {
       return;
     }
 
-    if (lightbox) {
-      lightbox.refresh();
-    }
-
     renderImages(images);
+    lightbox.refresh();
   } catch (error) {
     console.error(error);
   }
